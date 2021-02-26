@@ -6,8 +6,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let agnt of agentsList;">
-                <td>{{agnt.Name}}</td>
-                <td>{{agnt.Phone}}</td>
+                <td>{{agnt.FirstName}}</td>
+                <td>{{agnt.LastName}}</td>
             </tr>
         </tbody>
         <div><button (click)="CreateAgent()" class="primary btn-primary">Create</button></div>

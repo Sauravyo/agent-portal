@@ -1,4 +1,7 @@
 export class AgentModel{
-    public Name: any;
-    public Phone: any;
+    public  UserID :any;
+        public  GroupID :any;
+        public  GroupName :any;
+        public  LastName :any;
+        public  FirstName :any;
 }

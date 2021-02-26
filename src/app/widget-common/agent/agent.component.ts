@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AgentModel } from './models/agent.model';
+import { AgentService } from './services/agent.service';
 
 @Component({
   selector: 'app-agent',
@@ -7,26 +8,24 @@ import { AgentModel } from './models/agent.model';
   styleUrls: ['./agent.component.css']
 })
 export class AgentComponent implements OnInit {
-  public agentsList: AgentModel[] = [];
-  constructor() { 
-    var agent1 = new AgentModel();
-    agent1.Name = "Santosh Gyali";
-    agent1.Phone = "660-238-1234";
-    var agent2 = new AgentModel();
-    agent2.Name = "Radhika Praj";
-    agent2.Phone = "660-238-1235";
-
-    this.agentsList.push(agent1);
-    this.agentsList.push(agent2);
+  public agentsList: any[] = [];
+  constructor(public agentService: AgentService) {
+   
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.agentService.getAgentListData(200).subscribe(agntData => {
+      this.agentsList = agntData;
+    });
   }
 
-  CreateAgent(){
+  CreateAgent() {
     //open crete-edit-component
-    console.log("ok function is working")
-    console.log(this.agentsList)
+   var newAgent = new AgentModel();
+   newAgent.FirstName = "Radhika";
+
+   this.agentsList.push(newAgent);
+   console.log(this.agentsList)
   }
 
 }
